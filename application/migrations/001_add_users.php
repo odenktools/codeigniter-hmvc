@@ -30,15 +30,15 @@ class Migration_Add_users extends CI_Migration
                 'constraint' => '191',
             ),
             'created_at' => array(
-                'type' => 'datetime',
+                'type' => 'timestamp',
                 'null' => true,
             ),
             'updated_at' => array(
-                'type' => 'datetime',
+                'type' => 'timestamp',
                 'null' => true,
             ),
             'deleted_at' => array(
-                'type' => 'datetime',
+                'type' => 'timestamp',
                 'null' => true,
             )
         ));

@@ -5,6 +5,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 use Illuminate\Database\Capsule\Manager as Capsule;
 use Illuminate\Events\Dispatcher;
 use Illuminate\Container\Container;
+//use Dotenv\Dotenv;
+
+//$dotenv = Dotenv::createMutable(FCPATH, '.env');
+//$dotenv->load();
 
 /*
 | -------------------------------------------------------------------
@@ -80,11 +84,12 @@ $query_builder = true;
 
 $db['default'] = array(
     'dsn' => '',
-    'hostname' => 'localhost',
-    'username' => 'root',
-    'password' => 'moeloet',
-    'database' => 'barok',
-    'dbdriver' => 'mysqli',
+    'hostname' => getenv('DB_HOST'),
+    'username' => getenv('DB_USERNAME'),
+    'password' => getenv('DB_PASSWORD'),
+    'database' =>  getenv('DB_DATABASE'),
+    'port' =>  getenv('DB_PORT'),
+    'dbdriver' =>  getenv('DB_CONNECTION'),
     'dbprefix' => '',
     'pconnect' => false,
     'db_debug' => (ENVIRONMENT !== 'production'),

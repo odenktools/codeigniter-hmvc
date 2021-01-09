@@ -1,8 +1,16 @@
 # Codeigniter 3.x HMVC
 
+## Requirements
+
+* PHP 7.2.x
+* Composer
+
+## Features
+
 * Laravel Eloquent 5.2.x
 * HMVC
 * Migration
+* DotEnv
 * Rest Api (TODO)
 * AdminLTE (TODO)
 
@@ -10,13 +18,21 @@
 composer install
 ```
 
-Run Migration
+Copy default environment
+
+```bash
+cp .env.example .env.development
+```
+
+Edit database connection on ```.env.development``` file.
+
+Run Database Migration
 
 ```
 php index.php migrate
 ```
 
-# Route
+# Available Routes
 
 #### Frontend
 
