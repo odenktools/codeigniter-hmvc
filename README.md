@@ -18,6 +18,22 @@ php index.php migrate
 
 # Route
 
+#### Frontend
+
+```
+http://codeigniter.local.com
+```
+
+```
+http://codeigniter.local.com/welcome
+```
+
+```
+http://codeigniter.local.com/welcome/say_hello
+```
+
+#### Admin
+
 ```
 http://codeigniter.local.com/admin/hello
 ```

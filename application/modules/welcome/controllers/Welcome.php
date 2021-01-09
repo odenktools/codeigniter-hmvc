@@ -7,4 +7,9 @@ class Welcome extends MX_Controller
     {
         $this->load->view('welcome_message');
     }
+
+    public function say_hello()
+    {
+        $this->load->view('say_hello_message');
+    }
 }
