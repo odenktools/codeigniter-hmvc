@@ -11,7 +11,7 @@
 * HMVC
 * Migration
 * DotEnv
-* Rest Api (TODO)
+* Rest Api
 * AdminLTE (TODO)
 
 ```bash
@@ -69,4 +69,46 @@ http://codeigniter.local.com/admin/hello/login
 List all user
 ```
 http://codeigniter.local.com/admin/hello/list_data
+```
+
+#### Api
+
+Hello Controller
+
+```bash
+curl -X GET \
+  http://codeigniter.local.com/api/hello/list \
+  -H 'cache-control: no-cache'
+```
+
+
+```bash
+curl -X POST \
+  http://codeigniter.local.com/api/hello/createdata \
+  -H 'Content-Type: application/x-www-form-urlencoded' \
+  -H 'cache-control: no-cache' \
+  -F username=johndoe \
+  -F email=johndoe@gmail.com \
+  -F password=johndoe
+```
+
+```bash
+curl -X GET \
+  http://codeigniter.local.com/api/hello/login \
+  -H 'cache-control: no-cache'
+```
+
+
+Welcome Controller
+
+```bash
+curl -X GET \
+  http://codeigniter.local.com/api/welcome \
+  -H 'cache-control: no-cache'
+```
+
+```bash
+curl -X GET \
+  http://codeigniter.local.com/api/welcome/index \
+  -H 'cache-control: no-cache'
 ```
