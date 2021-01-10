@@ -5,6 +5,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 use Illuminate\Database\Capsule\Manager as Capsule;
 use Illuminate\Events\Dispatcher;
 use Illuminate\Container\Container;
+
 //use Dotenv\Dotenv;
 
 //$dotenv = Dotenv::createMutable(FCPATH, '.env');

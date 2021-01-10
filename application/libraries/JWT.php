@@ -1,10 +1,4 @@
-<?php
-
-// namespace Firebase\JWT;
-// use \DomainException;
-// use \InvalidArgumentException;
-// use \UnexpectedValueException;
-// use \DateTime;
+<?php (defined('BASEPATH')) OR exit('No direct script access allowed');
 
 /**
  * JSON Web Token implementation, based on this spec:

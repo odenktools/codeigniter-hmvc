@@ -1,5 +1,7 @@
 # Codeigniter 3.x HMVC
 
+Small footprint
+
 ## Requirements
 
 * PHP 7.2.x
@@ -7,10 +9,11 @@
 
 ## Features
 
-* Laravel Eloquent 5.2.x
-* HMVC
-* Migration
-* DotEnv
+* [Laravel Eloquent 5.2.x](https://github.com/illuminate/database)
+* [Twig Template Engine](https://twig.symfony.com/doc/1.x/)
+* [PHP dotenv](https://github.com/vlucas/phpdotenv)
+* HMVC Structure
+* Laravel Migration
 * Rest Api
 * AdminLTE (TODO)
 

@@ -16,7 +16,9 @@
 		"illuminate/pagination": "5.2.7",
 		"illuminate/events": "5.2.7",
 		"nesbot/carbon": "~1.20",
-		"ramsey/uuid": "^4.1"
+		"ramsey/uuid": "^4.1",
+		"twig/twig": "1.44.2",
+		"pimple/pimple": "~3.0"
 	},
 	"suggest": {
 		"paragonie/random_compat": "Provides better randomness in PHP 5.x"

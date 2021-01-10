@@ -1,13 +1,22 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
 
 require APPPATH . 'libraries/TokenHandler.php';
-require APPPATH . 'libraries/REST_Controller.php';
+//require APPPATH . 'libraries/REST_Controller.php';
+require APPPATH . 'libraries/ResponseStd.php';
 
 class Hello extends REST_Controller
 {
-    public function __construct()
+    /**
+     * Container instance
+     *
+     * @access protected
+     * @var \Pimple\Container
+     */
+    protected $container;
+
+    public function __construct($config = 'rest')
     {
-        parent::__construct();
+        parent::__construct($config);
         $this->load->model('User');
     }
 
@@ -17,16 +26,23 @@ class Hello extends REST_Controller
         $email = $this->input->post('email');
         $password = $this->input->post('password');
 
-        $data = User::create(array(
-            'id' => \Ramsey\Uuid\Uuid::uuid4()->toString(),
-            'username' => $username,
-            'email' => $email,
-            'password' => $this->hash_password($password),
-            'role_slug' => 'owner',
-            'created_at' => \Carbon\Carbon::now(),
-        ));
+        try {
+            $data = User::create(array(
+                'id' => \Ramsey\Uuid\Uuid::uuid4()->toString(),
+                'username' => $username,
+                'email' => $email,
+                'password' => $this->hash_password($password),
+                'role_slug' => 'owner',
+                'created_at' => \Carbon\Carbon::now(),
+            ));
 
-        $this->set_response($data, REST_Controller::HTTP_OK);
+            $output = ResponseStd::okSingle($data);
+            header('Content-Type: application/json');
+            return $this->set_response($output, REST_Controller::HTTP_OK);
+        } catch (\Exception $e) {
+            $output = ResponseStd::fail($e->getMessage());
+            return $this->set_response($output, REST_Controller::HTTP_OK);
+        }
     }
 
 
@@ -43,10 +59,12 @@ class Hello extends REST_Controller
         if ($user) {
             if (password_verify($password, $user->password)) {
                 $data = array('message' => 'oke');
-                $this->set_response($data, REST_Controller::HTTP_OK);
+                header('Content-Type: application/json');
+                return $this->set_response($data, REST_Controller::HTTP_OK);
             } else {
                 $data = array('message' => 'Invalid');
-                $this->set_response($data, 401);
+                header('Content-Type: application/json');
+                return $this->set_response($data, 401);
             }
         }
     }
@@ -60,7 +78,10 @@ class Hello extends REST_Controller
             ))
             ->whereRaw($conditions);
         $paginate = $select->paginate(20);
-        $this->set_response($paginate, REST_Controller::HTTP_OK);
+        $countAll = User::query()->count();
+        $output = ResponseStd::paginated($paginate, $countAll);
+        header('Content-Type: application/json');
+        return $this->set_response($output, REST_Controller::HTTP_OK);
     }
 
     private function hash_password($password)

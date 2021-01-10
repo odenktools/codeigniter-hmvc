@@ -10,7 +10,7 @@ class Hello extends MX_Controller
 
     public function index()
     {
-        $this->load->view('hello_message');
+        $this->twig->display('modules/hello/index');
     }
 
     public function create_data()
@@ -31,7 +31,7 @@ class Hello extends MX_Controller
             ->where(array('username' => 'odenktools'))
             ->where(array('email' => 'odenktools@gmail.com'))
             ->first();
-        if($user){
+        if ($user) {
             $pass_user = '12345678';
             if (password_verify($pass_user, $user->password)) {
                 echo "Login success";
@@ -50,7 +50,8 @@ class Hello extends MX_Controller
             ))
             ->whereRaw($conditions);
         $paginate = $select->paginate(20);
-        echo json_encode($paginate->toArray());
+        $data = array('title' => 'Hello', 'users' => $paginate);
+        $this->twig->display('modules/hello/index', $data);
     }
 
     private function hash_password($password)

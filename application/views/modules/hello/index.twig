@@ -1,0 +1,44 @@
+{% extends "layout/front.twig" %}
+
+{% block title %} Data {% endblock %}
+
+{% block head %}
+    {{ parent() }}
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-10 col-md-offset-1">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        {% if title == false %}
+                            HMVC
+                        {% else %}
+                            {{ title }}
+                        {% endif %}
+                    </div>
+
+                    <div class="panel-body">
+                        <p>The page you are looking at is being generated dynamically by Twig Engine.</p>
+
+                        <p>If you would like to edit this page you'll find it located at:</p>
+                        <code>application/views/module/hello/index.twig</code>
+
+                        <p>The corresponding controller for this page is found at:</p>
+                        <code>application/modules/admin/hello/controllers/Hello.php</code>
+
+                        {% if users %}
+                            <h3>List User</h3>
+                            <ul>
+                                {% for user in users %}
+                                    <li>{{ user.username|e }}</li>
+                                {% endfor %}
+                            </ul>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
